@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-list',
@@ -6,34 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['list.page.scss']
 })
 export class ListPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+
+  public dataLogs = [];
+  constructor(public fb: AngularFireDatabase) {
+    //this.fb.object('/logs/-LbgY96irhpnzUC1z3Es/Huminity').set(99);
   }
 
   ngOnInit() {
+    //this.dataLogs = [];
+    this.fb.list('/logs').snapshotChanges().subscribe((value: any) => {
+      value.forEach(element => {
+        this.dataLogs.push({
+          key: element.key ,
+          payload : element.payload.val()
+        });
+      });
+      console.log(this.dataLogs);
+    });
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
+
+  public removelog(id: string) {
+    this.dataLogs = [];
+    if (confirm('ยืนยันการลบข้อมูล')) {
+      this.fb.object('/logs/' + id).remove();
+      // this.fb.list('/logs').remove(id);
+    }
+    return false;
+  }
+
 }

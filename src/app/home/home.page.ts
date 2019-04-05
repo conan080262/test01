@@ -10,7 +10,11 @@ export class HomePage implements OnInit {
 
 
   constructor(public fb: AngularFireDatabase) {
-
+    this.fb.list('/logs').push(
+    {
+      'Temperature': Math.random() * 100  , 'Huminity': Math.random() * 100 ,
+      time: new Date().getDate() + '/' + (new Date().getMonth() + 1) + '/' + new Date().getFullYear()
+    });
   }
 
   ngOnInit() {

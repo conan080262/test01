@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="success">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,18 +10,33 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
+  <div style="position: absolute;z-index: 1;right: 20px;bottom: 20px;">
+      <button type="button" class="btn btn-primary">Primary</button>
+  </div>
+  <div class="list-layout"> <!--ถ้าต้องการให้กลางต้องกำหนด height: 100%;width: 100%;align-items: center-->
+    <div style="overflow: auto; height:50vh;width: 90vw;">
+      <table class="table table-secondary" *ngIf="dataLogs.length >0">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Key</th>
+            <th scope="col">Time</th>
+            <th scope="col">Huminity</th>
+            <th scope="col">Temperature</th>
+            <th scope="col">Button</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dataLogs , let i = index">
+            <th scope="row" style="vertical-align: middle;">{{i+1}}</th>
+            <td style="vertical-align: middle;">{{item.key}}</td>
+            <td style="vertical-align: middle;">{{item.payload.time}}</td>
+            <td style="vertical-align: middle;">{{item.payload.Huminity}}</td>
+            <td style="vertical-align: middle;">{{item.payload.Temperature}}</td>
+            <td style="vertical-align: middle;"><button type="button" class="btn btn-danger btn-sm" (click)="removelog(item.key)">Primary</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  -->
+</div>
 </ion-content>
