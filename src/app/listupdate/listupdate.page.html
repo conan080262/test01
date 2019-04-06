@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>listupdate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formUpdateList" (ngSubmit)="onUpdate()">
+    <div>
+      <ion-card>
+        <ion-item>
+          <ion-label position="fixed">key</ion-label>
+          <ion-input type="text" formControlName="key" readonly></ion-input>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-card>
+        <ion-item>
+          <ion-label position="fixed">Temperature</ion-label>
+          <ion-input type="text" formControlName="Temperature"></ion-input>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-card>
+        <ion-item>
+          <ion-label position="fixed">Huminity</ion-label>
+          <ion-input type="text" formControlName="Huminity"></ion-input>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-card>
+        <ion-item>
+          <ion-label position="fixed">time</ion-label>
+          <ion-input type="text" formControlName="time"></ion-input>
+        </ion-item>
+      </ion-card>
+    </div>
+
+    <div>
+        <ion-button color="success" type="submit" [disabled]="formUpdateList.invalid">Success</ion-button>
+    </div>
+  </form>
+</ion-content>

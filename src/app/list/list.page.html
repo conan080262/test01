@@ -13,8 +13,18 @@
   <div style="position: absolute;z-index: 1;right: 20px;bottom: 20px;">
       <button type="button" class="btn btn-primary">Primary</button>
   </div>
+
+  <div padding>
+    <ion-card>
+      <ion-item>
+        <ion-label position="fixed">Search</ion-label>
+        <ion-input [(ngModel)]="searchLogs" (keyup)="onSearch(searchLogs)" type="text"></ion-input>
+      </ion-item>
+    </ion-card>
+  </div>
+
   <div class="list-layout"> <!--ถ้าต้องการให้กลางต้องกำหนด height: 100%;width: 100%;align-items: center-->
-    <div style="overflow: auto; height:50vh;width: 90vw;">
+    <div style="overflow: auto; height:50vh;width: 100vw;">
       <table class="table table-secondary" *ngIf="dataLogs.length >0">
         <thead>
           <tr>
@@ -27,16 +37,22 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of dataLogs , let i = index">
+          <tr *ngFor="let item of dataLogsSearch , let i = index">
             <th scope="row" style="vertical-align: middle;">{{i+1}}</th>
             <td style="vertical-align: middle;">{{item.key}}</td>
             <td style="vertical-align: middle;">{{item.payload.time}}</td>
             <td style="vertical-align: middle;">{{item.payload.Huminity}}</td>
             <td style="vertical-align: middle;">{{item.payload.Temperature}}</td>
-            <td style="vertical-align: middle;"><button type="button" class="btn btn-danger btn-sm" (click)="removelog(item.key)">Primary</button></td>
+            <td style="vertical-align: middle;">
+              <span style="margin:0px 5px 0px 5px"><button type="button" class="btn btn-warning btn-sm"
+                [routerLink]="['/listupdate', convertJson(item)]"
+                routerDirection="forward">Update</button></span>
+              <span style="margin:0px 5px 0px 5px"><button type="button" class="btn btn-danger btn-sm" (click)="removelog(item.key)">Delete</button></span>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-</div>
+  </div>
+
 </ion-content>
