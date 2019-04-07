@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-icon name="undo" style="font-size: 20px;margin-left: 10px; padding: 10px;"  [routerLink]="['/list']"
+        routerDirection="root"></ion-icon>
     </ion-buttons>
     <ion-title>listupdate</ion-title>
+    <ion-buttons slot="end"> <!--ต้องมี ion item ครอบ slot start.end หรือ ion-toolbar -->
+      <ion-icon name="add-circle" style="font-size: 20px;margin-right: 10px; padding: 10px;"  [routerLink]="['/list']"
+      routerDirection="root"></ion-icon>
+    </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 

@@ -45,7 +45,7 @@
             <td style="vertical-align: middle;">{{item.payload.Temperature}}</td>
             <td style="vertical-align: middle;">
               <span style="margin:0px 5px 0px 5px"><button type="button" class="btn btn-warning btn-sm"
-                [routerLink]="['/listupdate', convertJson(item)]"
+                [routerLink]="['/list/listupdate', convertJson(item)]"
                 routerDirection="forward">Update</button></span>
               <span style="margin:0px 5px 0px 5px"><button type="button" class="btn btn-danger btn-sm" (click)="removelog(item.key)">Delete</button></span>
             </td>
