@@ -3,6 +3,7 @@ import { AngularFireDatabase } from "@angular/fire/database";
 import { MyserviceService } from '../service/myservice.service';
 import { AlertController } from '@ionic/angular';
 
+
 // tslint:disable-next-line:class-name
 export interface data {
   key : String;
@@ -20,7 +21,7 @@ export class ListPage implements OnInit {
   public searchLogs: string = '';
   public dataLogsSearch: Array<any> = [];
 
-  constructor(public fb: AngularFireDatabase, public ms: MyserviceService,public alertController: AlertController) {
+  constructor(public fb: AngularFireDatabase, public ms: MyserviceService, public alertController: AlertController) {
     // this.fb.object('/logs/-LbgY96irhpnzUC1z3Es/Huminity').set(99);
   }
 

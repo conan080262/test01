@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { MyserviceService } from './service/myservice.service';
+import { MicrogearService } from './service/microgear.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAj1qQ8hRxOtfeEdVF1r2bY63BkCxsFU8U',
@@ -37,7 +38,8 @@ export const firebaseConfig = {
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireDatabase,
-    MyserviceService
+    MyserviceService,
+    MicrogearService
   ],
   bootstrap: [AppComponent]
 })
